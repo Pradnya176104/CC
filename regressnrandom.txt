@@ -1,0 +1,15 @@
+from pandas.core.common import random_state
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+import pandas as pd
+import numpy as np
+data = pd.read_csv('/content/sample_data/california_housing_test.csv')
+X= data[["total_rooms"]]
+Y= data[["households"]]
+X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size = 0.25, random_state=48)
+
+# create regressor object
+regressor = RandomForestRegressor(n_estimators = 100, random_state = 0)
+# fit the regressor with x and y data
+regressor.fit(X, Y) 
+print(regr.score(X_test,Y_test))
